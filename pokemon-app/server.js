@@ -1,44 +1,49 @@
 const express = require('express');
+const methodOverride = require('method-override');
 
 const app = express();
 
-const pokemon = [
-    {
-      name: "Bulbasaur",
-      img: "http://img.pokemondb.net/artwork/bulbasaur.jpg"
-    },
-    {
-      name: "Ivysaur",
-      img: "http://img.pokemondb.net/artwork/ivysaur.jpg"
-    },
-    {
-      name: "Venusaur",
-      img: "http://img.pokemondb.net/artwork/venusaur.jpg"
-    },
-    {
-      name: "Charmander",
-      img: "http://img.pokemondb.net/artwork/charmander.jpg"
-    },
-    {
-      name: "Charizard",
-      img: "http://img.pokemondb.net/artwork/charizard.jpg"
-    },
-    {
-      name: "Squirtle",
-      img: "http://img.pokemondb.net/artwork/squirtle.jpg"
-    },
-    {
-      name: "Wartortle",
-      img: "http://img.pokemondb.net/artwork/wartortle.jpg"
-    }
-];
+const pokemon = require('./models/pokemon')
+
+app.use(express.urlencoded({extended: true}));
+app.use(methodOverride('_method'));
 
 app.get('/pokemon', (req, res) => {
-    res.send(pokemon);
+    res.render('index.ejs', {
+        pokemon: pokemon
+    })
+})
+
+app.get('/pokemon/new', (req, res) => {
+    res.render('new.ejs');
 })
 
 app.get('/pokemon/:index', (req, res) => {
-    res.send(pokemon[req.params.index]);
+    res.render('show.ejs', {
+        character: pokemon[req.params.index]
+    })
+})
+
+app.get('/pokemon/:index/edit', (req, res) => {
+    res.render('edit.ejs', {
+        character: pokemon[req.params.index],
+        index: req.params.index
+    })
+})
+
+app.post('/pokemon', (req, res) => {
+    pokemon.push(req.body);
+    res.redirect('/pokemon');
+})
+
+app.put('/pokemon/:index', (req, res) => {
+    pokemon[req.params.index] = req.body;
+    res.redirect(`/pokemon/${req.params.index}`);
+})
+
+app.delete('/pokemon/:index', (req, res) => {
+    pokemon.splice(req.params.index, 1);
+    res.redirect('/pokemon');
 })
 
 app.listen(3000, () => {
