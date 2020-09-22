@@ -39,6 +39,22 @@ const deletePokemon = (req, res) => {
     res.redirect('/pokemon');
 }
 
+const showByType = (req, res) => {
+    if(req.query.type === 'all'){
+        res.render('index.ejs', {
+            pokemon: pokemon
+        })
+    } else {
+        let pokemonByType = pokemon.filter(character => {
+            return character.type === req.query.type
+        })
+    
+        res.render('index.ejs', {
+            pokemon: pokemonByType
+        })
+    } 
+}
+
 module.exports = {
     index,
     show,
@@ -46,5 +62,6 @@ module.exports = {
     renderNew,
     editPokemon,
     createPokemon,
-    deletePokemon
+    deletePokemon,
+    showByType
 }

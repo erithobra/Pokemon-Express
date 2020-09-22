@@ -12,7 +12,16 @@
     <nav>
         <a href="/pokemon/new">Create a new Pokemon</a>
     </nav>
-
+    <br/>
+    <form action="/pokemon/fire/type" method="GET">
+        <select name="type">
+            <option selected value="all">All</option>
+            <option value="fire">Fire</option>
+            <option value="water">Water</option>
+            <option value="grass">Grass</option>
+        </select>
+        <input type="submit" value="Filter"/>
+    </form> 
     <ul>
         <% for(let i=0; i<pokemon.length; i++) { %>
             <li>
