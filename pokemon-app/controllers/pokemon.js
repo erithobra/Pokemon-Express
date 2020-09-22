@@ -1,5 +1,7 @@
 const pokemon = require('../models/pokemon');
 
+
+
 const index = (req, res) => {
     res.render('index.ejs', {
         pokemon: pokemon
@@ -30,6 +32,12 @@ const renderEdit = (req, res) => {
 }
 
 const editPokemon = (req, res) => {
+    if(req.file){
+        req.body.img = req.file.filename;
+    } else{
+        req.body.img = pokemon[req.params.index].img;
+    }
+    
     pokemon[req.params.index] = req.body;
     res.redirect(`/pokemon/${req.params.index}`);
 }

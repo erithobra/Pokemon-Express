@@ -9,7 +9,14 @@
 <body>
     <h1><%=character.name%></h1>
     <h2><%=character.type%></h2>
-    <img src=<%=character.img%> />
+    
+    <img src=
+        <% if(character.img.startsWith('http')) { %>
+            <%=character.img%>
+        <% } else { %>
+            "/img/<%=character.img%>" 
+        <% } %>        
+    />
     <form action="/pokemon/<%=index%>?_method=DELETE" method="POST">
         <input type="submit" value="Delete" />
     </form>

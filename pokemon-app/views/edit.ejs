@@ -7,10 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/pokemon/<%=index%>?_method=PUT" method="POST">
+    <form action="/pokemon/<%=index%>?_method=PUT" method="POST" enctype="multipart/form-data">
         Name: <input type="text" name="name" value="<%=character.name%>">
         Type: <input type="text" name="type" value="<%=character.type%>">
-        Img: <input type="text" name="img" value="<%=character.img%>" />
+        Img: <input type="file" accept="image/*" name="img"/>
         <input type="submit" value="Edit Pokemon" />
     </form>
 </body>

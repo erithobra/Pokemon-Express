@@ -6,6 +6,8 @@ const app = express();
 const pokemon = require('./models/pokemon')
 const routes = require('./routes');
 
+app.use(express.static('public'));
+
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 
