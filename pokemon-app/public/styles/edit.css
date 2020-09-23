@@ -1,9 +1,3 @@
-body {
-  background: lemonchiffon;
-  width: 100%;
-  margin: 0;
-}
-
 body form {
   display: flex;
   flex-direction: column;
