@@ -15,21 +15,13 @@ h2 {
   align-items: center;
 }
 
+.content div {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+
 img {
   object-fit: cover;
-}
-
-input[type=submit], a {
-  border: 1px solid #aaa;
-  border-radius: .5em;
-  padding: 5px;
-  background-color: #fff;
-  text-decoration: none;
-  color: black;
-  margin: 15px;
-}
-
-input[type=submit]:hover, a:hover {
-  background-color: lightgray;
-  cursor: pointer;
 }
