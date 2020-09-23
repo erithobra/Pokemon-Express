@@ -1,0 +1,32 @@
+body {
+  background: lemonchiffon;
+  width: 100%;
+  margin: 0;
+}
+
+body form {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  margin: 15px;
+}
+
+body form input {
+  margin: 5px;
+}
+
+body form input[type=submit] {
+  width: 50%;
+  border: 1px solid #aaa;
+  border-radius: .5em;
+  padding: 5px;
+  background-color: #fff;
+  text-decoration: none;
+  color: black;
+  margin: 15px;
+}
+
+input[type=submit]:hover, a:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}

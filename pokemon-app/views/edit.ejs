@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="/styles/edit.css" />
 </head>
 <body>
     <form action="/pokemon/<%=index%>?_method=PUT" method="POST" enctype="multipart/form-data">
-        Name: <input type="text" name="name" value="<%=character.name%>">
-        Type: <input type="text" name="type" value="<%=character.type%>">
-        Img: <input type="file" accept="image/*" name="img"/>
+        <div>Name: <input type="text" name="name" value="<%=character.name%>"></div>
+        <div>Type: <input type="text" name="type" value="<%=character.type%>"></div>
+        <div>Img: <input type="file" accept="image/*" name="img"/></div>
         <input type="submit" value="Edit Pokemon" />
     </form>
 </body>

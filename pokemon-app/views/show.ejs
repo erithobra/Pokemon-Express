@@ -5,21 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="/styles/show.css" />
 </head>
 <body>
+  <div class="content">
     <h1><%=character.name%></h1>
     <h2><%=character.type%></h2>
-    
+
     <img src=
         <% if(character.img.startsWith('http')) { %>
             <%=character.img%>
         <% } else { %>
-            "/img/<%=character.img%>" 
-        <% } %>        
+            "/img/<%=character.img%>"
+        <% } %>
     />
     <form action="/pokemon/<%=index%>?_method=DELETE" method="POST">
         <input type="submit" value="Delete" />
     </form>
     <a href="/pokemon/<%=index%>/edit">Edit</a>
+  </div>
 </body>
 </html>

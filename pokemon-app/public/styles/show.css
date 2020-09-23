@@ -1,0 +1,41 @@
+body {
+  background: lemonchiffon;
+  width: 100%;
+  margin: 0;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+h2 {
+  text-transform: capitalize;
+}
+
+.content {
+  width: 95%;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  object-fit: cover;
+}
+
+input[type=submit], a {
+  border: 1px solid #aaa;
+  border-radius: .5em;
+  padding: 5px;
+  background-color: #fff;
+  text-decoration: none;
+  color: black;
+  margin: 15px;
+}
+
+input[type=submit]:hover, a:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}

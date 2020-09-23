@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="/styles/index.css" />
 </head>
 <body>
     <h1>Poke Express</h1>
@@ -21,11 +22,11 @@
             <option value="grass">Grass</option>
         </select>
         <input type="submit" value="Filter"/>
-    </form> 
+    </form>
     <ul>
         <% for(let i=0; i<pokemon.length; i++) { %>
             <li>
-                <a href="/pokemon/<%=i%>"><%=pokemon[i].name%></a> 
+                <a href="/pokemon/<%=i%>"><%=pokemon[i].name%></a>
             </li>
             <br/>
         <% } %>
