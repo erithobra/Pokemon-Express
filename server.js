@@ -3,10 +3,7 @@ const app = express ();
 //const methodOverride = require("method-override");
 const pokemon = require("./models/pokemon.js");
 
-
-
-
-//index route
+//index route - Commit 4
 app.get("/pokemon/", (req, res) => {
     res.render("index.ejs", {
         pokemon: pokemon,
@@ -14,13 +11,18 @@ app.get("/pokemon/", (req, res) => {
     });
 });
 
+//show route - Commit 5
+app.get("/pokemon/:index", (req,res) => {
+    res.render("show.ejs", {
+        poke: pokemon[req.params.index]
+    });
+});
+
 // app.get("/pokemon/", (req,res) => {
 //     res.send(pokemon);
 // })
 
-// app.get("/pokemon/:index", (req,res) => {
-//     res.send(pokemon[req.params.index]);
-// });
+
 
 
 app.listen(3000, () => {
