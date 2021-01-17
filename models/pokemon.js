@@ -28,3 +28,5 @@ const pokemon = [
       img: "http://img.pokemondb.net/artwork/wartortle.jpg"
     }
   ];
+
+  module.exports = pokemon;
