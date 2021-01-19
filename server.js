@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express ();
 const methodOverride = require("method-override");
-const pokemon = require("./models/pokemon.js");
+const pokemon = require("./models/pokemon.js"); // tells the file to look pokemon.js file in the models directory
 
 //middleware
 app.use((req, res, next) => {
