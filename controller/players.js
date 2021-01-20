@@ -28,10 +28,10 @@ const profile = (req, res) => {
     });
 };
 
+
+
 ////// login view //////
-const loginRender = (req, res) => {
-    res.render("players/login.ejs");
-}
+
 
 const login = (req, res) => {
     let index = players.findIndex(
@@ -46,6 +46,5 @@ module.exports = {
     renderLogin,
     signup,
     profile,
-    loginRender,
     login,
 };
