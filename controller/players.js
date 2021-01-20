@@ -43,6 +43,12 @@ const deletePlayer = (req,res) => {
     console.log(players);
 }
 
+////// edit player //////
+const editPlayer = (req, res) => {
+    players[req.params.index] = req.body;
+    res.redirect(`/players/profile/${req.params.index}`);
+}
+
 
 module.exports = {
     index,
@@ -52,4 +58,5 @@ module.exports = {
     profile,
     login,
     deletePlayer,
+    editPlayer,
 };

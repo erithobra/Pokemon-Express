@@ -11,6 +11,7 @@ router.post("/signup", ctrl.players.signup);
 router.get("/profile/:index", ctrl.players.profile);
 router.post("/login/", ctrl.players.login);
 router.delete("/:index", ctrl.players.deletePlayer);
+router.put("/profile/:index", ctrl.players.editPlayer);
 
 
 
