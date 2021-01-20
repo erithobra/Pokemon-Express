@@ -1,6 +1,9 @@
+// imported express library
+
 const express = require("express");
-const pokemon = require("./models/pokemon.js"); // tells the file to look pokemon.js file in the models directory
 const methodOverride = require("method-override");
+
+const pokemon = require("./models/pokemon.js"); // tells the file to look pokemon.js file in the models directory
 const routes = require("./routes");
 
 const app = express ();
@@ -14,6 +17,7 @@ app.use(methodOverride("_method"));
 app.use(express.urlencoded({extended: true}));
 
 app.use("/pokemon", routes.pokemon);
+app.use("/players", routes.players);
 app.use("/pokemon/:index", routes.pokemon);
 
 
