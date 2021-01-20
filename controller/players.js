@@ -28,10 +28,24 @@ const profile = (req, res) => {
     });
 };
 
+////// login view //////
+const loginRender = (req, res) => {
+    res.render("players/login.ejs");
+}
+
+const login = (req, res) => {
+    let index = players.findIndex(
+        player => (player.username === req.body.username && player.password === req.body.password)
+    );
+    res.redirect(`/players/profile/${index}`);
+}
+
 module.exports = {
     index,
     renderSignup,
     renderLogin,
     signup,
     profile,
+    loginRender,
+    login,
 };

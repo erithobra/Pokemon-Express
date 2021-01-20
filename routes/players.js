@@ -9,6 +9,9 @@ router.get("/signup", ctrl.players.renderSignup);
 router.get("/login", ctrl.players.renderLogin);
 router.post("/signup", ctrl.players.signup);
 router.get("/profile/:index", ctrl.players.profile);
+router.get("/login/", ctrl.players.loginRender);
+router.post("/login/", ctrl.players.login);
+
 
 
 
