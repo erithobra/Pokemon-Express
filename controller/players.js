@@ -15,11 +15,6 @@ const signup = (req, res) => {
     console.log(players);
 };
 
-////// login functionality //////
-const renderLogin = (req, res) => {
-    res.render("players/login.ejs");
-};
-
 ////// profile view //////
 const profile = (req, res) => {
     res.render("players/profile.ejs", {
@@ -28,17 +23,26 @@ const profile = (req, res) => {
     });
 };
 
+////// login functionality //////
+const renderLogin = (req, res) => {
+    res.render("players/login.ejs");
+};
 
-
-////// login view //////
-
-
+////// login view profile //////
 const login = (req, res) => {
     let index = players.findIndex(
         player => (player.username === req.body.username && player.password === req.body.password)
     );
     res.redirect(`/players/profile/${index}`);
 }
+
+////// delete player //////
+const deletePlayer = (req,res) => {
+    players.splice(req.params.index, 1);
+    res.redirect("/players");
+    console.log(players);
+}
+
 
 module.exports = {
     index,
@@ -47,4 +51,5 @@ module.exports = {
     signup,
     profile,
     login,
+    deletePlayer,
 };
