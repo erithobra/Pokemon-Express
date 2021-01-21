@@ -5,11 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Player Profile</title>
+        <link rel="stylesheet" href="/style.css" type="text/css">
     </head>
     <body>
         <h1>Welcome <%=player.name%></h1>
 
-        <form action="/players/profile/<%=index%>?_method=PUT" method="POST">
+        <form action="/players/<%=index%>?_method=PUT" method="POST">
             Name: <input type="text" name="name" value=<%=player.name%> /><br> <br>
             Username: <input type="text" name="username" value=<%=player.username%> /> <br> <br>
             Password: <input type="text" name="password" value=<%=player.password%> /><br> <br>  

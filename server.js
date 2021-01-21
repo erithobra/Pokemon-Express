@@ -20,6 +20,9 @@ app.use("/pokemon", routes.pokemon);
 app.use("/players", routes.players);
 app.use("/pokemon/:index", routes.pokemon);
 
+//reference to public folder to use CSS
+app.use(express.static(__dirname + "/public"));
+
 
 //index route - Commit 4
 // app.get("/pokemon/", (req, res) => {

@@ -1,0 +1,14 @@
+body {
+    font-family: sans-serif;
+    display: grid;
+    justify-items: center;
+}
+
+form {
+    display: grid;
+    justify-items: center;
+}
+
+input {
+    text-align: center;
+}
