@@ -44,12 +44,21 @@ const edit = (req, res) => {
     });
 };
 
+// put complete
 const put = (req, res) => {
-    let index = parseInt(req.params.index);
-    pokemon[index] = req.body;
-    res.redirect("/pokemon/");
+    // let index = parseInt(req.params.index);
+    // pokemon[index] = req.body;
+    // res.redirect("/pokemon/");
+    Pokemon.update(req.body,{
+        where: { id: req.params.index },
+        returning: true,
+    })
+    .then(poke => {
+        res.redirect("/pokemon/");
+    });
 };
 
+// delete complete
 const deletePokemon = (req, res) => {
     // pokemon.splice(req.params.index, 1);
     // res.redirect("/pokemon/");
