@@ -1,8 +1,15 @@
-const pokemon = require("../models/pokemon.js");
+// const pokemon = require("../models/pokemon.js"); // <-- removed this
+const Pokemon = require('../models').Pokemon; // <-- added this
 
 const index = (req, res) => {
-    res.render("index.ejs", {
-        pokemon: pokemon,
+    // res.render("index.ejs", {
+    //     pokemon: pokemon,
+    // });
+    Pokemon.findAll()
+    .then(pokemon => {
+        res.render('index.ejs', {
+            pokemon: pokemon
+        });
     });
 };
 
@@ -35,8 +42,14 @@ const deletePokemon = (req, res) => {
 }
 
 const show = (req, res) => {
-    res.render("show.ejs", {
-        poke: pokemon[req.params.index]
+    // res.render("show.ejs", {
+    //     poke: pokemon[req.params.index]
+    // });
+    Pokemon.findByPk(req.params.index)
+    .then(poke => {
+        res.render('show.ejs', {
+            poke: poke
+        });
     });
 };
 

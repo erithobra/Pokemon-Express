@@ -1,4 +1,5 @@
-const players = require("../models/players");
+// const players = require("../models/players"); // <-- removed this
+const Player = require('../models').Player // <-- added this
 
 const index = (req, res) => {
     res.render("players/index.ejs");
