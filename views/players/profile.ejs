@@ -10,7 +10,7 @@
     <body>
         <h1>Welcome <%=player.name%></h1>
 
-        <form action="/players/<%=index%>?_method=PUT" method="POST">
+        <form action="/players/<%=player.id%>?_method=PUT" method="POST"> <!-- changed from 'index' to 'player.id' -->
             Name: <input type="text" name="name" value=<%=player.name%> /><br> <br>
             Username: <input type="text" name="username" value=<%=player.username%> /> <br> <br>
             Password: <input type="text" name="password" value=<%=player.password%> /><br> <br>  
@@ -18,7 +18,7 @@
         </form>
 
         <br>
-        <form action="/players/<%=index%>?_method=DELETE" method="POST">
+        <form action="/players/<%=player.id%>?_method=DELETE" method="POST">
             <input type="submit" value="Delete User" />
         </form>
     </body>
