@@ -1,13 +1,14 @@
 // const pokemon = require("../models/pokemon.js"); // <-- removed this
 const Pokemon = require('../models').Pokemon; // <-- added this
 
+// index complete
 const index = (req, res) => {
     // res.render("index.ejs", {
     //     pokemon: pokemon,
     // });
     Pokemon.findAll()
     .then(pokemon => {
-        res.render('index.ejs', {
+        res.render("index.ejs", {
             pokemon: pokemon
         });
     });
@@ -23,10 +24,17 @@ const postPokemon = (req, res) => {
     res.redirect("/pokemon");
 };
 
+// edit complete
 const edit = (req, res) => {
-    res.render("edit.ejs", {
-        poke: pokemon[req.params.index],
-        index: req.params.index
+    // res.render("edit.ejs", {
+    //     poke: pokemon[req.params.index],
+    //     index: req.params.index
+    // });
+    Pokemon.findByPk(req.params.index)
+    .then(poke => {
+        res.render("edit.ejs", {
+            poke: poke
+        });
     });
 };
 
@@ -41,13 +49,14 @@ const deletePokemon = (req, res) => {
     res.redirect("/pokemon/");
 }
 
+// show complete
 const show = (req, res) => {
     // res.render("show.ejs", {
     //     poke: pokemon[req.params.index]
     // });
     Pokemon.findByPk(req.params.index)
     .then(poke => {
-        res.render('show.ejs', {
+        res.render("show.ejs", {
             poke: poke
         });
     });
