@@ -26,7 +26,7 @@ const postPokemon = (req, res) => {
     // res.redirect("/pokemon");
     Pokemon.create(req.body)
     .then(newPokemon => {
-        res.redirect('/pokemon');
+        res.redirect("/pokemon/");
     });
 };
 
@@ -51,9 +51,13 @@ const put = (req, res) => {
 };
 
 const deletePokemon = (req, res) => {
-    pokemon.splice(req.params.index, 1);
-    res.redirect("/pokemon/");
-}
+    // pokemon.splice(req.params.index, 1);
+    // res.redirect("/pokemon/");
+    Pokemon.destroy({ where: {id: req.params.index} })
+    .then(() => {
+        res.redirect("/pokemon/");
+    });
+};
 
 // show complete
 const show = (req, res) => {
