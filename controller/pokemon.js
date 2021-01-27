@@ -14,14 +14,20 @@ const index = (req, res) => {
     });
 };
 
+// render new complete -- no changes were needed
 const newPokemon = (req, res) => {
     res.render("new.ejs");
 };
 
+// post complete
 const postPokemon = (req, res) => {
-    pokemon.push(req.body);
-    console.log(pokemon);
-    res.redirect("/pokemon");
+    // pokemon.push(req.body);
+    // console.log(pokemon);
+    // res.redirect("/pokemon");
+    Pokemon.create(req.body)
+    .then(newPokemon => {
+        res.redirect('/pokemon');
+    });
 };
 
 // edit complete
