@@ -1,6 +1,8 @@
 // const players = require("../models/players"); // <-- removed this
 const Player = require('../models').Player // <-- added this
 
+const Team = require("../models").Team;
+
 // index render complete -- no changes were needed
 const index = (req, res) => {
     res.render("players/index.ejs");
@@ -30,11 +32,20 @@ const profile = (req, res) => {
     //     player: players[req.params.index],
     //     index: req.params.index
     // });
-    Player.findByPk(req.params.index)
+
+    Player.findByPk(req.params.index, {
+        include: [Team]
+    })
     .then(playerProfile => {
-        res.render("players/profile.ejs", {
-            player: playerProfile
-        });
+        Team.findAll()
+        .then(allTeams => {
+            res.render("players/profile.ejs", {
+                player: playerProfile,
+                teams: allTeams
+            });  
+        })
+
+
     });
 };
 
