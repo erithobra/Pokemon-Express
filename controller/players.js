@@ -3,6 +3,8 @@ const Player = require('../models').Player // <-- added this
 
 const Team = require("../models").Team;
 
+const Pokemon = require("../models").Pokemon;
+
 // index render complete -- no changes were needed
 const index = (req, res) => {
     res.render("players/index.ejs");
@@ -34,14 +36,25 @@ const profile = (req, res) => {
     // });
 
     Player.findByPk(req.params.index, {
-        include: [Team]
+        include: [
+            {
+                model: Team
+            },
+            {
+                model: Pokemon
+            }
+        ],
     })
     .then(playerProfile => {
         Team.findAll()
         .then(allTeams => {
+            Pokemon.findAll()
+            .then(allPokemon => {
             res.render("players/profile.ejs", {
                 player: playerProfile,
-                teams: allTeams
+                teams: allTeams,
+                pokes: allPokemon
+            });
             });  
         })
 
@@ -90,12 +103,20 @@ const deletePlayer = (req,res) => {
 const editPlayer = (req, res) => {
     // players[req.params.index] = req.body;
     // res.redirect(`/players/profile/${req.params.index}`);
+    console.log(req.body);
     Player.update(req.body, {
         where: {id: req.params.index},
         returning: true
     })
-    .then(updatePlayer => {
-        res.redirect(`/players/profile/${req.params.index}`)
+    .then((updatePlayer) => {
+        
+        Pokemon.findByPk(req.body.pokemon).then((foundPokemon) => {
+            Player.findByPk(req.params.index).then((foundPlayer) => {
+                foundPlayer.addPokemon(foundPokemon);
+                res.redirect(`/players/profile/${req.params.index}`)
+            })
+        })
+        
     });
 };
 

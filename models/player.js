@@ -14,6 +14,11 @@ module.exports = (sequelize, DataTypes) => {
       Player.belongsTo(models.Team, {
         foreignKey: 'teamId'
       });
+      Player.belongsToMany(models.Pokemon, {
+        through: "PlayerPokemon",
+        foreignKey: "playerId",
+        otherKey: "pokemonId"
+      });
     };
   };
   Player.init({

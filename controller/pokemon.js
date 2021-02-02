@@ -1,6 +1,8 @@
 // const pokemon = require("../models/pokemon.js"); // <-- removed this
 const Pokemon = require('../models').Pokemon; // <-- added this
 
+const Player = require("../models").Player;
+
 // index complete
 const index = (req, res) => {
     // res.render("index.ejs", {
@@ -73,7 +75,9 @@ const show = (req, res) => {
     // res.render("show.ejs", {
     //     poke: pokemon[req.params.index]
     // });
-    Pokemon.findByPk(req.params.index)
+    Pokemon.findByPk(req.params.index, {
+        include: [Player]
+    })
     .then(poke => {
         res.render("show.ejs", {
             poke: poke

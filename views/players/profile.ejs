@@ -17,13 +17,19 @@
             Team: <select name = "teamId">
                 <% for (let i = 0; i < teams.length; i++) { %>
                 <% if (teams[i].id === player.teamId) { %>
-                    <option selected = "<%=teams[i].id%>"><%=teams[i].name%></option>
+                    <option value = "<%=teams[i].id%>" selected ="<%=teams[i].id%>"><%=teams[i].name%></option>
                 <% } else{ %>
                     <option value = "<%=teams[i].id%>"><%=teams[i].name%></option>
                 <% } %>    
                 <% } %>
             </select><br /><br />
-              
+            
+            Add Pokemon: <select name = "pokemon">
+                <% for (let i = 0; i < pokes.length; i++) { %>
+                <option value = "<%= pokes[i].id%>"><%=pokes[i].name%></option>
+                <% } %>
+            </select>
+            <br /><br />
             <input type="submit" value="Edit Profile" />
         </form>
 
@@ -31,5 +37,15 @@
         <form action="/players/<%=player.id%>?_method=DELETE" method="POST">
             <input type="submit" value="Delete User" />
         </form>
+        <br /><br />
+        Player has added:
+        <% for (let i = 0; i<player.Pokemons.length; i++) { %>
+            <li>
+                <%= player.Pokemons[i].name %>
+            </li>
+            <br />
+        <% } %>  
+        <br /><br />
+
     </body>
 </html>
